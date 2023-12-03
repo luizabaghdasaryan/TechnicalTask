@@ -1,0 +1,46 @@
+﻿@page "/contactdetails/{id:int}"
+@using AddressBookApp.Client.Services;
+@using AddressBookApp.Shared.DataTransferObjects;
+@inject IContactService contactService
+
+<PageTitle>Contact Details</PageTitle>
+
+<h3>Contact Details</h3>
+
+@if (contact == null)
+{
+    <h3 align="center">Not Found</h3>
+}
+else
+{
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">ID:</dt>
+            <dd class="col-sm-10">@contact.Id</dd>
+
+            <dt class="col-sm-2">Full Name:</dt>
+            <dd class="col-sm-10">@contact.FullName</dd>
+
+            <dt class="col-sm-2">Email:</dt>
+            <dd class="col-sm-10">@contact.Email</dd>
+
+            <dt class="col-sm-2">Phone Number:</dt>
+            <dd class="col-sm-10">@contact.PhoneNumber</dd>
+
+            <dt class="col-sm-2">Physical Address:</dt>
+            <dd class="col-sm-10">@contact.PhysicalAddress</dd>
+        </dl>
+    </div>
+}
+
+@code {
+    private ContactDto? contact;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        contact = await contactService.GetContactByIdAsync(Id);
+    }
+}

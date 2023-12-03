@@ -1,0 +1,19 @@
+﻿
+<input type="text" name="searchTerm" id="query" placeholder="Keywords..." @bind="searchQuery">
+<button style="border-radius:3px;border-color:darkmagenta;background-color:white;color:darkmagenta;font-weight:bolder" @onclick="@(async() => await OnClickCallBack.InvokeAsync(searchQuery))">Search</button>
+  
+@code {
+    public string searchQuery { get; set; }
+    [Parameter]
+    public string SearchQuery { get; set; }
+    [Parameter]
+    public EventCallback<string> OnClickCallBack { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(SearchQuery))
+        {
+            await OnClickCallBack.InvokeAsync(SearchQuery);
+        }
+    }
+}

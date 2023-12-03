@@ -1,0 +1,31 @@
+﻿@inject NavigationManager navigationManager
+
+&emsp;
+<input type="number" name="searchTerm" id="query" placeholder="Id" style="width:50px" min="1" @onchange="ViewDetails" />
+<button style="border-radius:3px;border-color:darkmagenta;background-color:white;color:darkmagenta;font-weight:bolder" @onclick="GetContact">View Details By Id</button>
+
+@code {
+    private int Id;
+    private bool isValidInput;
+
+    private void ViewDetails(ChangeEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(e.Value.ToString()))
+        {
+            Id = int.Parse(e.Value.ToString());
+            isValidInput = true;
+        }
+        else
+        {
+            isValidInput = false;
+        }
+    }
+
+    private void GetContact()
+    {
+        if (isValidInput)
+        {
+            navigationManager.NavigateTo($"/contactdetails/{Id}");
+        }
+    }
+}

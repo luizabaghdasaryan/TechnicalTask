@@ -1,0 +1,78 @@
+﻿@page "/editcontact/{id:int}"
+@using AddressBookApp.Client.Services;
+@using AddressBookApp.Shared.DataTransferObjects;
+@inject IContactService contactService
+@inject NavigationManager navigationManager
+
+<h3>Edit Contact</h3>
+
+<EditForm Model="@editedContact" OnValidSubmit="UpdateContact" class="card card-body bg-light mt-5">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3 row">
+        <label for="FirstName" class="col-md-2 col-form-label">First Name:</label>
+        <div class="col-md-10">
+            <InputText id="FirstName" class="form-control" maxlength="50" placeholder="Please enter your name" @bind-Value="editedContact.FirstName" />
+            <ValidationMessage For="@(() => editedContact.FirstName)" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="LastName" class="col-md-2 col-form-label">Full Name:</label>
+        <div class="col-md-10">
+            <InputText id="LastName" class="form-control" maxlength="50" placeholder="Please enter your last name" @bind-Value="editedContact.LastName" />
+            <ValidationMessage For="@(() => editedContact.LastName)" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="Email" class="col-md-2 col-form-label">Email:</label>
+        <div class="col-md-10">
+            <InputText id="Email" class="form-control" placeholder="Please enter your email" @bind-Value="editedContact.Email" />
+            <ValidationMessage For="@(() => editedContact.Email)" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="PhoneNumber" class="col-md-2 col-form-label">Phone Number:</label>
+        <div class="col-md-10">
+            <InputText id="PhoneNumber" class="form-control" maxlength="12" placeholder="+374********" @bind-Value="editedContact.PhoneNumber" />
+            <ValidationMessage For="@(() => editedContact.PhoneNumber)" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="PhysicalAddress" class="col-md-2 col-form-label">Physical Address:</label>
+        <div class="col-md-10">
+            <InputText id="PhysicalAddress" class="form-control" maxlength="60" placeholder="Please enter your address (Optional)" @bind-Value="editedContact.PhysicalAddress" />
+            <ValidationMessage For="@(() => editedContact.PhysicalAddress)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary" style="background-color:darkmagenta;font-size:medium;border-style:none">Update</button>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    private ContactDto? contactToEdit;
+    private ContactForManipulationDto editedContact = new ContactForManipulationDto();
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        contactToEdit = await contactService.GetContactByIdAsync(Id);
+
+        editedContact.FirstName = contactToEdit.FullName.Split(" ")[0];
+        editedContact.LastName = contactToEdit.FullName.Split(" ")[1];
+        editedContact.Email = contactToEdit.Email;
+        editedContact.PhoneNumber = contactToEdit.PhoneNumber;
+        editedContact.PhysicalAddress = contactToEdit.PhysicalAddress;
+    }
+
+    private async Task UpdateContact()
+    {
+        await contactService.UpdateContactAsync(Id, editedContact);
+      
+        navigationManager.NavigateTo("/contacts");
+    }
+}

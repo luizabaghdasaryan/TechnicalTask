@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddressBookApp.Server", "AddressBookApp.Server", "{73D8AB1F-A16E-4719-83E9-A25E1AA524F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "AddressBookApp.Server\LoggerService\LoggerService.csproj", "{CD7D7B92-F165-4585-B412-8D83E57977DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "AddressBookApp.Server\Entities\Entities.csproj", "{04EDA36D-7010-43C0-BC7A-7894AE1A6804}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "AddressBookApp.Server\Repository\Repository.csproj", "{B5EE5653-7A25-4C30-8691-02DB28D682D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "AddressBookApp.Server\Contracts\Contracts.csproj", "{97D24012-5177-4F87-8A99-1B172E0BB9A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Contracts", "AddressBookApp.Server\Service.Contracts\Service.Contracts.csproj", "{F1B0BED2-1ADC-44A4-91A4-26F3C96702F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "AddressBookApp.Server\Service\Service.csproj", "{45148F5B-3C82-45C0-895D-D9B8AB06B83D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBookApp.Client", "AddressBookApp.Client\AddressBookApp.Client.csproj", "{1F223201-478C-417A-B10F-C0E4E98FC42A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBookApp.Shared", "AddressBookApp.Shared\AddressBookApp.Shared.csproj", "{9B2763A0-3414-4C3C-A67E-7C72B68BA62D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddressBookApp.Client", "AddressBookApp.Client", "{216A5F39-E9DC-46E0-BED2-9BECA74A3D59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddressBookApp.Shared", "AddressBookApp.Shared", "{47547079-1D48-4602-A35C-B7F2CC133EF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBookApp.Server", "AddressBookApp.Server\AddressBookApp.Server\AddressBookApp.Server.csproj", "{99E49C64-84F0-4C6D-B422-05090578952D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD7D7B92-F165-4585-B412-8D83E57977DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7D7B92-F165-4585-B412-8D83E57977DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7D7B92-F165-4585-B412-8D83E57977DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7D7B92-F165-4585-B412-8D83E57977DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EDA36D-7010-43C0-BC7A-7894AE1A6804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EDA36D-7010-43C0-BC7A-7894AE1A6804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EDA36D-7010-43C0-BC7A-7894AE1A6804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EDA36D-7010-43C0-BC7A-7894AE1A6804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5EE5653-7A25-4C30-8691-02DB28D682D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5EE5653-7A25-4C30-8691-02DB28D682D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5EE5653-7A25-4C30-8691-02DB28D682D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5EE5653-7A25-4C30-8691-02DB28D682D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D24012-5177-4F87-8A99-1B172E0BB9A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D24012-5177-4F87-8A99-1B172E0BB9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D24012-5177-4F87-8A99-1B172E0BB9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D24012-5177-4F87-8A99-1B172E0BB9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B0BED2-1ADC-44A4-91A4-26F3C96702F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B0BED2-1ADC-44A4-91A4-26F3C96702F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B0BED2-1ADC-44A4-91A4-26F3C96702F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B0BED2-1ADC-44A4-91A4-26F3C96702F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45148F5B-3C82-45C0-895D-D9B8AB06B83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45148F5B-3C82-45C0-895D-D9B8AB06B83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45148F5B-3C82-45C0-895D-D9B8AB06B83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45148F5B-3C82-45C0-895D-D9B8AB06B83D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F223201-478C-417A-B10F-C0E4E98FC42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F223201-478C-417A-B10F-C0E4E98FC42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F223201-478C-417A-B10F-C0E4E98FC42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F223201-478C-417A-B10F-C0E4E98FC42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B2763A0-3414-4C3C-A67E-7C72B68BA62D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2763A0-3414-4C3C-A67E-7C72B68BA62D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2763A0-3414-4C3C-A67E-7C72B68BA62D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2763A0-3414-4C3C-A67E-7C72B68BA62D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E49C64-84F0-4C6D-B422-05090578952D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E49C64-84F0-4C6D-B422-05090578952D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E49C64-84F0-4C6D-B422-05090578952D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E49C64-84F0-4C6D-B422-05090578952D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CD7D7B92-F165-4585-B412-8D83E57977DD} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+		{04EDA36D-7010-43C0-BC7A-7894AE1A6804} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+		{B5EE5653-7A25-4C30-8691-02DB28D682D5} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+		{97D24012-5177-4F87-8A99-1B172E0BB9A2} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+		{F1B0BED2-1ADC-44A4-91A4-26F3C96702F1} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+		{45148F5B-3C82-45C0-895D-D9B8AB06B83D} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+		{1F223201-478C-417A-B10F-C0E4E98FC42A} = {216A5F39-E9DC-46E0-BED2-9BECA74A3D59}
+		{9B2763A0-3414-4C3C-A67E-7C72B68BA62D} = {47547079-1D48-4602-A35C-B7F2CC133EF3}
+		{99E49C64-84F0-4C6D-B422-05090578952D} = {73D8AB1F-A16E-4719-83E9-A25E1AA524F4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D15BBD2-0949-453F-B371-A9DE26E2A90C}
+	EndGlobalSection
+EndGlobal

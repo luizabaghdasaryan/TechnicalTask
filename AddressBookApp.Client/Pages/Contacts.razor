@@ -1,0 +1,86 @@
+﻿@page "/contacts"
+@using AddressBookApp.Client.Components;
+@using AddressBookApp.Client.Services;
+@using AddressBookApp.Shared.DataTransferObjects;
+@using Microsoft.AspNetCore.WebUtilities;
+@inject NavigationManager navigationManager
+@inject IContactService contactService
+
+<PageTitle>Contacts</PageTitle>
+
+@if(displayedContacts is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <Search OnClickCallBack="@SearchContacts" SearchQuery="@_searchQuery" />
+   
+    <GetContactById />
+
+    <br /><br />
+
+    if(displayedContacts.Length > 0)
+    {
+        <ContactsTable Contacts="@displayedContacts"/>
+    }
+    else
+    {
+        <br /><br />
+        <h3 align="center">@message</h3>
+    }
+}
+
+@code {
+    [Parameter]
+    public string _searchQuery { get; set; } = "";
+    public ContactDto[] contacts;
+    private ContactDto[]? displayedContacts;
+    private OnDeleteModal? _modal;
+    private string message = "";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        displayedContacts = await contactService.GetContactsAsync();
+
+        if(displayedContacts is not null)
+        {
+            contacts = new ContactDto[displayedContacts.Length];
+            Array.Copy(displayedContacts, contacts, displayedContacts.Length);
+        }
+
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+        var queryStrings = QueryHelpers.ParseQuery(uri.Query);
+        if (queryStrings.TryGetValue("search", out var searchQuery))
+        {
+            _searchQuery = searchQuery;
+        }
+    }
+
+    private void SearchContacts(string searchQuery)
+    {
+        displayedContacts = contacts;
+
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+        {
+            var keywords = searchQuery.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var key in keywords)
+            {
+                displayedContacts = displayedContacts.Intersect(contacts.Where(c => c.FullName.Contains(key, StringComparison.OrdinalIgnoreCase) ||
+                            c.Email.Contains(key, StringComparison.OrdinalIgnoreCase) ||
+                            c.PhoneNumber.Contains(key, StringComparison.OrdinalIgnoreCase) ||
+                            c.PhysicalAddress.Contains(key, StringComparison.OrdinalIgnoreCase)).ToArray()).ToArray();
+
+                if (displayedContacts.Length == 0)
+                {
+                    message = "Not Found";
+                    break;
+                }
+            }
+        }
+
+        navigationManager.NavigateTo(navigationManager.GetUriWithQueryParameter("search", searchQuery));
+    }
+}
