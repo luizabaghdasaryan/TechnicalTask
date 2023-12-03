@@ -26,6 +26,7 @@ namespace Repository.Configuration
                     LastName = "Harutyunyan",
                     Email = "ani.harutyunyan@example.com",
                     PhoneNumber = "+37491567890",
+                    PhysicalAddress = "Not Specified"
                 },
                 new Contact
                 {

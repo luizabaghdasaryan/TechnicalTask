@@ -34,7 +34,7 @@ else
 @code {
     [Parameter]
     public string _searchQuery { get; set; } = "";
-    public ContactDto[] contacts;
+    public ContactDto[]? contacts;
     private ContactDto[]? displayedContacts;
     private OnDeleteModal? _modal;
     private string message = "";
@@ -68,10 +68,10 @@ else
 
             foreach (var key in keywords)
             {
-                displayedContacts = displayedContacts.Intersect(contacts.Where(c => c.FullName.Contains(key, StringComparison.OrdinalIgnoreCase) ||
+                displayedContacts = displayedContacts.Where(c => c.FullName.Contains(key, StringComparison.OrdinalIgnoreCase) ||
                             c.Email.Contains(key, StringComparison.OrdinalIgnoreCase) ||
                             c.PhoneNumber.Contains(key, StringComparison.OrdinalIgnoreCase) ||
-                            c.PhysicalAddress.Contains(key, StringComparison.OrdinalIgnoreCase)).ToArray()).ToArray();
+                            c.PhysicalAddress.Contains(key, StringComparison.OrdinalIgnoreCase)).ToArray();
 
                 if (displayedContacts.Length == 0)
                 {
